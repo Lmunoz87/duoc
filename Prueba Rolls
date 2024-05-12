@@ -1,0 +1,95 @@
+pikachuRoll = 4500
+otakuRoll = 5000
+pulpoVenRoll = 5200
+anguilaElectRoll = 4800
+acumP = 0
+acumO = 0
+acumPul = 0
+acumA = 0
+totalDesc = 0
+valorO = 0
+valorP = 0
+valorA = 0
+valorPul = 0
+subtotalCompra = 0
+totalCompra = 0
+respNuevaCompra = "si"
+
+while respNuevaCompra == "si":
+     acumP = 0
+     acumO = 0
+     acumPul = 0
+     acumA = 0
+     valorO = 0
+     valorP = 0
+     valorA = 0
+     valorPul = 0
+     subtotalCompra = 0
+     totalCompra = 0
+     descuento = 0
+     while True:
+               try:
+                    print("******************")
+                    print("*******MENU*******")
+                    print("******************\n")
+                    print("1. Pikachu Roll $4500.")
+                    print("2. Otaku Roll $5000.")
+                    print("3. Pulpo Venenoso Roll $5200.")
+                    print("4. Anguila Eléctrica Roll $4800.")
+                    print("5. Completar pedido.\n")
+                    seleccion = int(input("Seleccione una opción entre 1 y 5.\n"))
+                    if seleccion == 1:
+                         cantP = int(input("¿Cuántos desea llevar?\n"))
+                         acumP = acumP + cantP
+                         valorP = acumP * pikachuRoll
+                    elif seleccion == 2:
+                         cantO = int(input("¿Cuántos desea llevar?\n"))
+                         acumO = acumO + cantO
+                         valorO = acumO * otakuRoll
+                    elif seleccion == 3:
+                         cantPul = int(input("¿Cuántos desea llevar?\n"))
+                         acumPul = acumPul + cantPul
+                         valorPul = acumPul * pulpoVenRoll
+                    elif seleccion == 4:
+                         cantA = int(input("¿Cuántos desea llevar?\n"))
+                         acumA = acumA + cantA
+                         valorA = acumA * anguilaElectRoll
+                    elif seleccion == 5:
+                         print("Ha completado su pedido.\n")
+                         break
+               except ValueError:
+                    print("Debe seleccionar una opción entre 1 y 5.\n")
+
+     respDescuento = input("¿Tiene algún código de descuento?\n").lower()
+     if respDescuento == "si":
+          while True:
+               codDesc = input("Ingrese el código de descuento:\n").lower()
+               if codDesc == "soyotaku":
+                    descuento = 0.1
+                    break
+               else:
+                    selx = input("Código de descuento erróneo.\nSi desea intentar nuevamente presione 'ENTER', si no, presione 'x'.\n").lower()
+                    if selx == "x":
+                         break
+
+
+     subtotalCompra = valorP + valorO + valorPul + valorA
+     totalProd = acumP + acumO + acumPul + acumA
+     totalDesc = subtotalCompra * descuento
+     totalCompra = subtotalCompra - totalDesc
+
+     print("*************************")
+     print("TOTAL PRODUCTOS:",totalProd)
+     print("*************************")
+     print("Pikachu Roll:",acumP)
+     print("Otaku Roll:",acumO)
+     print("Pulpo Venenoso Roll:",acumPul)
+     print("Angulia Eléctrica Roll:",acumA)
+     print("*************************")
+     print("Subtotal por pagar:",subtotalCompra)
+     print("Descuento por código:",totalDesc)
+     print("TOTAL:",totalCompra)
+     print("")
+
+     respNuevaCompra = input("¿Desea volver a comprar?\n").lower()
+
